@@ -15,7 +15,13 @@ Add Django to Virtual Environment:
 ```python
 pip install django
 ```
+Run Django Server
+```python 
+manage.py runserver 
+```
 Install threejs
 ```
 npm install --save three
 ```
+
+
