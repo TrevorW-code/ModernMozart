@@ -11,3 +11,6 @@ source virtual_environment/bin/activate
 
 Add Django to Virtual Environment:
 pip install django
+
+
+
