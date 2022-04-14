@@ -2,3 +2,12 @@
 Information Visualization Project
 
 We are hoping to create a visualization tool for a DJ mix that we are making
+
+Create Virtual Environment:
+python3 -m venv virtual_environment
+
+Activate Virtual Environment:
+source bin/virtual_environment/activate
+
+Add Django to Virtual Environment:
+pip install django
