@@ -7,7 +7,7 @@ Create Virtual Environment:
 python3 -m venv virtual_environment
 
 Activate Virtual Environment:
-source bin/virtual_environment/activate
+source virtual_environment/bin/activate
 
 Add Django to Virtual Environment:
 pip install django
