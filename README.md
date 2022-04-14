@@ -16,3 +16,6 @@ Add Django to Virtual Environment:
 ```python
 pip install django
 ```
+
+Install threejs
+```
