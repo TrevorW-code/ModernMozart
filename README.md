@@ -11,12 +11,10 @@ Activate Virtual Environment:
 ```python
 source virtual_environment/bin/activate
 ```
-
 Add Django to Virtual Environment:
 ```python
 pip install django
 ```
-
 Install threejs
 ```
 npm install --save three
