@@ -1,10 +1,11 @@
 
 // import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js'
 // import * as dat from 'dat.gui'
+const additionfile = require('./web_audio.js');
 import './style.css'
 import * as THREE from 'three'
-import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js'
 
+// import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js' // probably will add this last
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
@@ -33,12 +34,14 @@ planeMesh.position.y = 15
 planeMesh.rotation.x = 5.5
 
 
-camera.position.z = 100;
+camera.position.z = 125;
 
 function animate() {
     requestAnimationFrame( animate );
     // planeMesh.rotation.x += 0.01;
     // planeMesh.rotation.y += 0.01;
+    planeMesh.rotation.z += 0.001;
+
     renderer.render( scene, camera );
 }
 
