@@ -1,4 +1,3 @@
-
 var vizInit = function (){
   
     var file = document.getElementById("thefile");
@@ -27,7 +26,7 @@ var vizInit = function (){
       var analyser = context.createAnalyser();
       src.connect(analyser);
       analyser.connect(context.destination);
-      analyser.fftSize = 512; //1024
+      analyser.fftSize = 512;
       var bufferLength = analyser.frequencyBinCount;
       var dataArray = new Uint8Array(bufferLength);
   
@@ -41,8 +40,6 @@ var vizInit = function (){
   
       var renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
       renderer.setSize(window.innerWidth, window.innerHeight);
-
-      
   
       var planeGeometry = new THREE.PlaneGeometry(800, 800, 20, 20);
       var planeMaterial = new THREE.MeshLambertMaterial({
