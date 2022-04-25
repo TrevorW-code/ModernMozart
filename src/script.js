@@ -1,5 +1,5 @@
 // import * as dat from 'dat.gui'
-// const additionfile = require('./web_audio.js');
+
 import './style.css'
 import * as THREE from 'three'
 import { vertexShader, fragmentShader } from "./shaders/shaders";
@@ -19,6 +19,8 @@ var vizInit = function (){
     file.onchange = function(){
       fileLabel.classList.add('normal');
       audio.classList.add('active');
+      audio.classList.remove('hidden');
+
       var files = this.files;
       
       audio.src = URL.createObjectURL(files[0]);
@@ -106,7 +108,7 @@ function play() {
         requestAnimationFrame( animate );
         // planeMesh.rotation.x += 0.01;
         // planeMesh.rotation.y += 0.01;
-        planeMesh.rotation.z += 0.001;
+        planeMesh.rotation.z += 0.003;
 
         renderer.render( scene, camera );
     }
