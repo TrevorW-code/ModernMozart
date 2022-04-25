@@ -1,8 +1,3 @@
-const AudioContext = window.AudioContext || window.webkitAudioContext;
-let audioCtx;
-
-const audioElement = document.querySelector('audio');
-let track;
 
 var vizInit = function (){
   
@@ -32,7 +27,7 @@ var vizInit = function (){
       var analyser = context.createAnalyser();
       src.connect(analyser);
       analyser.connect(context.destination);
-      analyser.fftSize = 512;
+      analyser.fftSize = 512; //1024
       var bufferLength = analyser.frequencyBinCount;
       var dataArray = new Uint8Array(bufferLength);
   
@@ -46,6 +41,8 @@ var vizInit = function (){
   
       var renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
       renderer.setSize(window.innerWidth, window.innerHeight);
+
+      
   
       var planeGeometry = new THREE.PlaneGeometry(800, 800, 20, 20);
       var planeMaterial = new THREE.MeshLambertMaterial({
@@ -126,22 +123,6 @@ var vizInit = function (){
           camera.aspect = window.innerWidth / window.innerHeight;
           camera.updateProjectionMatrix();
           renderer.setSize(window.innerWidth, window.innerHeight);
-      }
-  
-      function makeRoughBall(mesh, bassFr, treFr) {
-          mesh.geometry.vertices.forEach(function (vertex, i) {
-              var offset = mesh.geometry.parameters.radius;
-              var amp = 7;
-              var time = window.performance.now();
-              vertex.normalize();
-              var rf = 0.00001;
-              var distance = (offset + bassFr ) + noise.noise3D(vertex.x + time *rf*7, vertex.y +  time*rf*8, vertex.z + time*rf*9) * amp * treFr;
-              vertex.multiplyScalar(distance);
-          });
-          mesh.geometry.verticesNeedUpdate = true;
-          mesh.geometry.normalsNeedUpdate = true;
-          mesh.geometry.computeVertexNormals();
-          mesh.geometry.computeFaceNormals();
       }
   
       function makeRoughGround(mesh, distortionFr) {
