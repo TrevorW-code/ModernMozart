@@ -8,6 +8,17 @@
     --shadowColorFaint: hsla(0, 0%, 0%, 0.2);
   }
   
+/*     
+    --bgColor : hsla(242, 86%, 6%, 1);
+    --bgColorLight : rgb(58, 4, 4);
+    --textColor : hsla(242, 86%, 88%, 1);
+    --textColorDark : hsla(242, 36%, 0%, 1);
+    --paperColor: hsla(242, 86%, 44%, 1);
+    --paperColorDark: hsla(242, 86%, 34%, 1);
+    --shadowColorFaint: hsla(0, 0%, 0%, 0.2);
+*/
+
+
   ::selected{
     color: var(--textColorDark);
   }

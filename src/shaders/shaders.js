@@ -1,3 +1,18 @@
+const defaultVertexShader = () => {
+  return `
+      varying float x;
+      varying float y;
+      varying float z; 
+      uniform float u_time;
+      varying vec3 vUv;
+      void main() {
+        vUv = position;
+        float z = sin(abs(position.x) + abs(position.y) + u_time + .005)
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position.x, position.y, z, 1.0);
+      }
+    `;
+};
+
 const vertexShader = () => {
     return `
         varying float x;
@@ -50,4 +65,4 @@ const vertexShader = () => {
     `;
   };
   
-  export { vertexShader, fragmentShader };
+  export { defaultVertexShader, vertexShader, fragmentShader };

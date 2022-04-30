@@ -2,14 +2,15 @@
 
 import './style.css'
 import * as THREE from 'three'
-import { vertexShader, fragmentShader } from "./shaders/shaders";
+import { defaultVertexShader, vertexShader, fragmentShader } from "./shaders/shaders";
+
 
 var vizInit = function (){
   
     var file = document.getElementById("thefile");
     var audio = document.getElementById("audio");
     var fileLabel = document.querySelector("label.file");
-    
+
     
     document.onload = function(e){
       console.log(e);
@@ -20,26 +21,29 @@ var vizInit = function (){
       fileLabel.classList.add('normal');
       audio.classList.add('active');
       audio.classList.remove('hidden');
+      
 
       var files = this.files;
-      
       audio.src = URL.createObjectURL(files[0]);
       audio.load();
       audio.play();
       play();
+
+      //
+      
+      // jsmediatags.read(files[0], {
+      //   onSuccess: function(tag) {
+      //     console.log(tag);
+      //   },
+      //   onError: function(error) {
+      //     console.log(':(', error.type, error.info);
+      //   }
+      // });
+
+      //
     }
 }
 
-// function play() {
-//     var context = new AudioContext();
-//     var src = context.createMediaElementSource(audio);
-//     var analyser = context.createAnalyser();
-//     src.connect(analyser);
-//     analyser.connect(context.destination);
-//     analyser.fftSize = 512; //1024
-//     var bufferLength = analyser.frequencyBinCount;
-//     var dataArray = new Uint8Array(bufferLength);
-// }
 function play() {
 
     const uniforms = {
@@ -55,8 +59,8 @@ function play() {
           type: "float[64]",
           value: dataArray,
         },
-        // u_black: { type: "vec3", value: new THREE.Color(0x000000) },
-        // u_white: { type: "vec3", value: new THREE.Color(0xffffff) },
+        u_black: { type: "vec3", value: new THREE.Color(0x000000) }, //might not need this
+        u_white: { type: "vec3", value: new THREE.Color(0xffffff) }, //might not need this
       };
 
     var context = new window.AudioContext();
@@ -76,8 +80,6 @@ function play() {
     document.body.appendChild( renderer.domElement );
     
     const planeGeometry = new THREE.PlaneGeometry(64,64,64,64);
-    // const planeMaterial = new THREE.MeshNormalMaterial({wireframe: true});
-    // shader material for control on verticies
     const planeCustomMaterial = new THREE.ShaderMaterial({
         uniforms: uniforms,
         vertexShader: vertexShader(),
@@ -100,7 +102,7 @@ function play() {
 
     function animate(tick) {
         analyser.getByteFrequencyData(dataArray)
-        // console.log(dataArray)
+        console.log(dataArray)
 
         uniforms.u_time.value = tick;
         uniforms.u_data_arr.value = dataArray;

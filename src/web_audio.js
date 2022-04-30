@@ -13,7 +13,14 @@ var vizInit = function (){
       fileLabel.classList.add('normal');
       audio.classList.add('active');
       var files = this.files;
+      var reader = new FileReader();
       
+      //
+
+
+      
+      //
+
       audio.src = URL.createObjectURL(files[0]);
       audio.load();
       audio.play();
@@ -21,6 +28,7 @@ var vizInit = function (){
     }
     
   function play() {
+      
       var context = new AudioContext();
       var src = context.createMediaElementSource(audio);
       var analyser = context.createAnalyser();
