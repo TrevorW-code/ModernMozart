@@ -18,6 +18,15 @@
     --shadowColorFaint: hsla(0, 0%, 0%, 0.2);
 */
 
+@keyframes make_invisible {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}
+
+@keyframes make_visible {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
 
   ::selected{
     color: var(--textColorDark);
@@ -54,6 +63,19 @@
     left: 10px;
     bottom: 10px;
     width: calc(100% - 20px);
+    opacity: 0;
+    animation-name: make_invisible;
+    animation-duration: .5s;
+  }
+
+  audio:hover {
+    position: fixed;
+    left: 10px;
+    bottom: 10px;
+    width: calc(100% - 20px);
+    animation-name: make_visible;
+    animation-duration: .25s;
+    opacity: 1;
   }
   
   audio.active{

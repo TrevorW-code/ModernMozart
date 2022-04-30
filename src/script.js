@@ -1,3 +1,5 @@
+// https://stackoverflow.com/questions/23945755/chrome-extension-capture-tab-audio
+  // maybe make an extension for part of this? Could be cool --> save links & visualize life
 // import * as dat from 'dat.gui'
 
 import './style.css'
@@ -98,7 +100,7 @@ function play() {
     planeMesh.rotation.x = 5.5
 
 
-    camera.position.z = 125;
+    camera.position.z = 130;
 
     function animate(tick) {
         analyser.getByteFrequencyData(dataArray)
