@@ -132,6 +132,5 @@
   }
 
 .test {
-  position: absolute;
-  left: calc(100% - 200px);
+padding-right: 15px;
 }

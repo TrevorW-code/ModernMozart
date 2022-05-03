@@ -27,7 +27,7 @@ var vizInit = function (){
       
 
       var files = this.files;
-      console.log(this.files[0]['name'])
+      console.log(this.files[0]['name']) 
       audio.src = URL.createObjectURL(files[0]);
       fileName.innerHTML = this.files[0]['name']
       audio.load();
