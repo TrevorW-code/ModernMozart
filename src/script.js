@@ -7,7 +7,7 @@ import * as THREE from 'three'
 import { defaultVertexShader, vertexShader, fragmentShader } from "./shaders/shaders";
 
 // const fs = require('fs');
-const path = require('path');
+// const path = require('path');
 
 
 var vizInit = function (){
@@ -29,13 +29,16 @@ var vizInit = function (){
       audio.classList.remove('hidden');
 
       var files = this.files;
-      // var test = path.format(this.files);
-      // console.log(test);
-      const random = Math.round(Math.random()*20)
+      var num = 0
+      if (files.length < 2) {
+        num = 0
+      } else {
+        var num = Math.round(Math.random()*files.length)
+      }
       console.log(files)
       console.log(this.files[0]);
-      audio.src = URL.createObjectURL(files[random]); // added random chosen song
-      fileName.innerHTML = this.files[random]['name'] // added random chosen song
+      audio.src = URL.createObjectURL(files[num]); // added random chosen song
+      fileName.innerHTML = this.files[num]['name'] // added random chosen song
       audio.load();
       audio.play();
       play();
@@ -109,6 +112,7 @@ function play() {
         planeMesh.rotation.z += 0.003;
 
         renderer.render( scene, camera );
+          
     }
     animate();
     
