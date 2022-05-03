@@ -130,3 +130,8 @@
   .hidden {
     clip-path: circle(0);
   }
+
+.test {
+  position: absolute;
+  left: calc(100% - 200px);
+}

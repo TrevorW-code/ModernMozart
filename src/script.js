@@ -12,6 +12,7 @@ var vizInit = function (){
     var file = document.getElementById("thefile");
     var audio = document.getElementById("audio");
     var fileLabel = document.querySelector("label.file");
+    var fileName = document.getElementById('song_title')
 
     
     document.onload = function(e){
@@ -26,23 +27,12 @@ var vizInit = function (){
       
 
       var files = this.files;
+      console.log(this.files[0]['name'])
       audio.src = URL.createObjectURL(files[0]);
+      fileName.innerHTML = this.files[0]['name']
       audio.load();
       audio.play();
       play();
-
-      //
-      
-      // jsmediatags.read(files[0], {
-      //   onSuccess: function(tag) {
-      //     console.log(tag);
-      //   },
-      //   onError: function(error) {
-      //     console.log(':(', error.type, error.info);
-      //   }
-      // });
-
-      //
     }
 }
 
@@ -104,7 +94,7 @@ function play() {
 
     function animate(tick) {
         analyser.getByteFrequencyData(dataArray)
-        console.log(dataArray)
+        // console.log(dataArray)
 
         uniforms.u_time.value = tick;
         uniforms.u_data_arr.value = dataArray;
