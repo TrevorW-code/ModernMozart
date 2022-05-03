@@ -6,6 +6,9 @@ import './style.css'
 import * as THREE from 'three'
 import { defaultVertexShader, vertexShader, fragmentShader } from "./shaders/shaders";
 
+// const fs = require('fs');
+const path = require('path');
+
 
 var vizInit = function (){
   
@@ -24,12 +27,15 @@ var vizInit = function (){
       fileLabel.classList.add('normal');
       audio.classList.add('active');
       audio.classList.remove('hidden');
-      
 
       var files = this.files;
-      console.log(this.files[0]['name']) 
-      audio.src = URL.createObjectURL(files[0]);
-      fileName.innerHTML = this.files[0]['name']
+      // var test = path.format(this.files);
+      // console.log(test);
+      const random = Math.round(Math.random()*20)
+      console.log(files)
+      console.log(this.files[0]);
+      audio.src = URL.createObjectURL(files[random]); // added random chosen song
+      fileName.innerHTML = this.files[random]['name'] // added random chosen song
       audio.load();
       audio.play();
       play();
@@ -86,11 +92,11 @@ function play() {
     planeMesh.scale.x = 2 
     planeMesh.scale.y = 2 
     planeMesh.scale.z = 2 
-    planeMesh.position.y = 15
-    planeMesh.rotation.x = 5.5
+    planeMesh.position.y = 35
+    planeMesh.rotation.x = 5.6
 
 
-    camera.position.z = 130;
+    camera.position.z = 120;
 
     function animate(tick) {
         analyser.getByteFrequencyData(dataArray)
@@ -100,8 +106,6 @@ function play() {
         uniforms.u_data_arr.value = dataArray;
 
         requestAnimationFrame( animate );
-        // planeMesh.rotation.x += 0.01;
-        // planeMesh.rotation.y += 0.01;
         planeMesh.rotation.z += 0.003;
 
         renderer.render( scene, camera );
