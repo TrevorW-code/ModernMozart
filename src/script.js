@@ -29,6 +29,16 @@ var vizInit = function (){
       audio.classList.remove('hidden');
       fileName.classList.add('playing');
 
+      audio.onpause = () => {
+        fileName.classList.remove('playing');
+        fileName.classList.add('padding');
+      }
+
+      audio.onplay = () => {
+        fileName.classList.add('playing');
+        fileName.classList.remove('padding');
+      }
+
       var files = this.files;
       var num = 0
       if (files.length < 2) {
