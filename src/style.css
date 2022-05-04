@@ -18,6 +18,15 @@
     --shadowColorFaint: hsla(0, 0%, 0%, 0.2);
 */
 
+@keyframes rainbow {
+  0% {
+    background-position: 0 0;
+}
+  100% {
+    background-position: 90% 0;
+}
+}
+
 @keyframes make_invisible {
   from {opacity: 1;}
   to {opacity: 0;}
@@ -32,6 +41,8 @@
     color: var(--textColorDark);
   }
   
+  background
+
   html, body{
     margin: 0;
     padding: 0;
@@ -131,6 +142,18 @@
     clip-path: circle(0);
   }
 
-.test {
+.padding {
 padding-right: 15px;
+}
+
+
+
+.playing  {
+  background: linear-gradient(to right, #6666ff, #0099ff , #00ff00, #ff3399, #6666ff, #0099ff, #00ff00);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: rainbow 2s linear infinite;
+  background-size: 400% 100%;
+  padding-right: 15px;
 }

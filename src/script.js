@@ -27,6 +27,7 @@ var vizInit = function (){
       fileLabel.classList.add('normal');
       audio.classList.add('active');
       audio.classList.remove('hidden');
+      fileName.classList.add('playing');
 
       var files = this.files;
       var num = 0
@@ -112,7 +113,7 @@ function play() {
         planeMesh.rotation.z += 0.003;
 
         renderer.render( scene, camera );
-          
+        
     }
     animate();
     
