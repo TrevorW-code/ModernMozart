@@ -39,6 +39,25 @@ var vizInit = function (){
         fileName.classList.remove('padding');
       }
 
+      var playlist = {}
+      var files = this.files;
+      var num = 0
+
+      // switch(files.length) {
+      //   case (1):
+      //     audio.src = URL.createObjectURL(files[num]); // added random chosen song
+      //     fileName.innerHTML = this.files[num]['name'] // added random chosen song
+      //     audio.load();
+      //     audio.play();
+      //     play();
+      //   default:
+      //     console.log('test')
+      //     for (let song in files) {
+      //       playlist[song] = files[song];
+      //     }
+          
+      //   }
+
       var files = this.files;
       var num = 0
       if (files.length < 2) {
