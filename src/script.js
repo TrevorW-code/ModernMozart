@@ -16,8 +16,10 @@ var vizInit = function (){
     var audio = document.getElementById("audio");
     var fileLabel = document.querySelector("label.file");
     var fileName = document.getElementById('song_title')
+    var upNext = document.getElementById('next_title')
 
-    
+
+
     document.onload = function(e){
       console.log(e);
       audio.play();
@@ -43,35 +45,56 @@ var vizInit = function (){
       var files = this.files;
       var num = 0
 
-      // switch(files.length) {
-      //   case (1):
-      //     audio.src = URL.createObjectURL(files[num]); // added random chosen song
-      //     fileName.innerHTML = this.files[num]['name'] // added random chosen song
-      //     audio.load();
-      //     audio.play();
-      //     play();
-      //   default:
-      //     console.log('test')
-      //     for (let song in files) {
-      //       playlist[song] = files[song];
-      //     }
-          
-      //   }
-
-      var files = this.files;
-      var num = 0
-      if (files.length < 2) {
-        num = 0
-      } else {
-        var num = Math.round(Math.random()*files.length)
+      audio.onended = () => {
+        num += 1;
+        console.log('next song')
+        audio.src = URL.createObjectURL(playlist[num]); // added random chosen song
+        fileName.innerHTML = playlist[num]['name'] // added random chosen song
+        upNext.innerHTML = "Next: " + playlist[num+1]['name']
+        audio.load();
+        audio.play();
+        play();
       }
-      console.log(files)
-      console.log(this.files[0]);
-      audio.src = URL.createObjectURL(files[num]); // added random chosen song
-      fileName.innerHTML = this.files[num]['name'] // added random chosen song
-      audio.load();
-      audio.play();
-      play();
+
+      switch(true) {
+        case (files.length<2):
+          audio.src = URL.createObjectURL(files[num]); // added random chosen song
+          fileName.innerHTML = this.files[num]['name'] // added random chosen song
+          audio.load();
+          audio.play();
+          play();
+          break;
+        case (files.length>2):
+          for (let song in files) {
+            playlist[song] = files[song];
+          }
+          console.log(playlist)
+          console.log('test')
+          audio.src = URL.createObjectURL(playlist[num]); // added random chosen song
+          fileName.innerHTML = playlist[num]['name'] // added random chosen song
+          upNext.innerHTML = "Next: " + playlist[num+1]['name']
+          audio.load();
+          audio.play();
+          play();
+          // get song from playlist, pass it to audio source?
+
+          // get song name from playlist, get name from files and connect source to file
+        }
+
+      // var files = this.files;
+      // var num = 0
+      // if (files.length < 2) {
+      //   num = 0
+      // } else {
+      //   var num = Math.round(Math.random()*files.length)
+      // }
+      // console.log(files)
+      // console.log(this.files[0]);
+      // audio.src = URL.createObjectURL(files[num]); // added random chosen song
+      // fileName.innerHTML = this.files[num]['name'] // added random chosen song
+      // audio.load();
+      // audio.play();
+      // play();
     }
 }
 
