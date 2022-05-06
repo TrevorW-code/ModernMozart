@@ -50,7 +50,13 @@ var vizInit = function (){
         console.log('next song')
         audio.src = URL.createObjectURL(playlist[num]); // added random chosen song
         fileName.innerHTML = playlist[num]['name'] // added random chosen song
-        upNext.innerHTML = "Next: " + playlist[num+1]['name']
+        try {
+          upNext.innerHTML = "Next: " + playlist[num+1]['name']
+        }
+        catch(err) {
+          console.log(err.message); 
+          upNext.innerHTML = " ";
+        }
         audio.load();
         audio.play();
         play();
@@ -59,7 +65,8 @@ var vizInit = function (){
       switch(true) {
         case (files.length<2):
           audio.src = URL.createObjectURL(files[num]); // added random chosen song
-          fileName.innerHTML = this.files[num]['name'] // added random chosen song
+          fileName.innerHTML = this.files[num]['name']
+          upNext.innerHTML = ""; // added random chosen song
           audio.load();
           audio.play();
           play();
