@@ -18,13 +18,12 @@ var vizInit = function (){
     var fileName = document.getElementById('song_title')
     var upNext = document.getElementById('next_title')
 
-
-
     document.onload = function(e){
       console.log(e);
       audio.play();
       play();
     }
+    
     file.onchange = function(){
       fileLabel.classList.add('normal');
       audio.classList.add('active');
@@ -55,7 +54,7 @@ var vizInit = function (){
         }
         catch(err) {
           console.log(err.message); 
-          upNext.innerHTML = " ";
+          upNext.innerHTML = "";
         }
         audio.load();
         audio.play();
@@ -88,20 +87,7 @@ var vizInit = function (){
           // get song name from playlist, get name from files and connect source to file
         }
 
-      // var files = this.files;
-      // var num = 0
-      // if (files.length < 2) {
-      //   num = 0
-      // } else {
       //   var num = Math.round(Math.random()*files.length)
-      // }
-      // console.log(files)
-      // console.log(this.files[0]);
-      // audio.src = URL.createObjectURL(files[num]); // added random chosen song
-      // fileName.innerHTML = this.files[num]['name'] // added random chosen song
-      // audio.load();
-      // audio.play();
-      // play();
     }
 }
 
