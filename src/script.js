@@ -1,10 +1,10 @@
 // https://stackoverflow.com/questions/23945755/chrome-extension-capture-tab-audio
-  // maybe make an extension for part of this? Could be cool --> save links & visualize life
+// maybe make an extension for part of this? Could be cool --> save links & visualize life
 // import * as dat from 'dat.gui'
 
 import './style.css'
 import * as THREE from 'three'
-import { defaultVertexShader, vertexShader, fragmentShader } from "./shaders/shaders";
+import { vertexShader, fragmentShader } from "./shaders/shaders";
 
 // const fs = require('fs');
 // const path = require('path');
@@ -165,6 +165,3 @@ function play() {
 }
 
 window.onload = vizInit();
-
-
-// import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js' // probably will add this last

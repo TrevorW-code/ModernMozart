@@ -1,7 +1,10 @@
 # Modern Mozart
-Information Visualization Project
 
-We are hoping to create a visualization tool for a DJ mix that we are making
+An tiny old project that visualizes MP3 files built on ThreeJS and Javascript Audio Web APIs 
+
+<img src="static/image.png" alt="drawing" width="600"/>
+
+## Running the Project
 
 To install the dependencies
 ```node
@@ -12,3 +15,5 @@ To run the dev server
 ```node
 npm run dev
 ```
+
+To visualize a song, simply click "Choose Audio"
